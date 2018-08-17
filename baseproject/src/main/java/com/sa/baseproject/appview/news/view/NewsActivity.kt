@@ -12,7 +12,7 @@ class NewsActivity : AppActivity() {
 
     override fun initializeComponents() {
         setSupportActionBar(toolbar)
-        this.appFragmentManager!!.addFragment<Any>(AppFragmentState.F_NEWS_LIST, null, false)
+        this.appFragmentManager!!.addFragment<Any>(AppFragmentState.F_MUSIC, null, false)
     }
 
     override fun trackScreen() {

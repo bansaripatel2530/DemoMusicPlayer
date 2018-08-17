@@ -37,6 +37,22 @@ import com.sa.baseproject.R
  */
 
 class VideoPlayerComponent(private val context: Context, private val simpleExoPlayerView: SimpleExoPlayerView, private val videoUrl: String) : LifecycleObserver, ExoPlayer.EventListener {
+    override fun onTimelineChanged(timeline: Timeline?, manifest: Any?, reason: Int) {
+
+    }
+
+    override fun onPositionDiscontinuity(reason: Int) {
+    }
+
+    override fun onSeekProcessed() {
+    }
+
+    override fun onRepeatModeChanged(repeatMode: Int) {
+    }
+
+    override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {
+    }
+
     private var resumeWindow: Int = 0
     private var resumePosition: Long = 0
 
@@ -132,9 +148,9 @@ class VideoPlayerComponent(private val context: Context, private val simpleExoPl
         resumePosition = C.TIME_UNSET
     }
 
-    override fun onTimelineChanged(timeline: Timeline, manifest: Any?) {
-
-    }
+//    override fun onTimelineChanged(timeline: Timeline, manifest: Any?) {
+//
+//    }
 
     override fun onTracksChanged(trackGroups: TrackGroupArray, trackSelections: TrackSelectionArray) {
 
@@ -178,9 +194,9 @@ class VideoPlayerComponent(private val context: Context, private val simpleExoPl
         }
     }
 
-    override fun onPositionDiscontinuity() {
-
-    }
+//    override fun onPositionDiscontinuity() {
+//
+//    }
 
     override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {
 

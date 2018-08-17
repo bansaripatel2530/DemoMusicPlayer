@@ -26,14 +26,14 @@ class NewsListFragment : AppFragment() {
     override fun initializeComponent(view: View?) {
         setListData()
 
-        swipeContainer.setOnRefreshListener {
-            viewProvider?.fetchTimelineAsync()
-        }
-
-        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light)
+//        swipeContainer.setOnRefreshListener {
+//            viewProvider?.fetchTimelineAsync()
+//        }
+//
+//        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+//                android.R.color.holo_green_light,
+//                android.R.color.holo_orange_light,
+//                android.R.color.holo_red_light)
     }
 
     private var adapter: NewsSourceAdapter? = null
@@ -56,9 +56,9 @@ class NewsListFragment : AppFragment() {
     }
 
     private fun setListData() {
-        adapter = NewsSourceAdapter(context!!)
-        rvNewsSource.layoutManager = LinearLayoutManager(context)
-        rvNewsSource.setHasFixedSize(true)
-        rvNewsSource.adapter = adapter
+//        adapter = NewsSourceAdapter(context!!)
+//        rvNewsSource.layoutManager = LinearLayoutManager(context)
+//        rvNewsSource.setHasFixedSize(true)
+//        rvNewsSource.adapter = adapter
     }
 }

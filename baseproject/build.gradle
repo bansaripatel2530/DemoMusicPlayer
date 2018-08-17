@@ -127,7 +127,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-location:$playserviceLibraryVersion"
 
     // Exo player lib
-    implementation 'com.google.android.exoplayer:exoplayer:r2.4.3'
+    implementation 'com.google.android.exoplayer:exoplayer:2.8.2'
 
     // SDP and SSP libs for dimensions
     implementation 'com.intuit.sdp:sdp-android:1.0.5'
