@@ -1,7 +1,7 @@
 package com.sa.baseproject.base
 
 
-import com.sa.baseproject.appview.Music.view.MusicListFragment
+import com.sa.baseproject.appview.music.view.MusicListFragment
 import com.sa.baseproject.appview.home.view.HomeFragment
 import com.sa.baseproject.appview.news.view.NewsDetailsFragment
 import com.sa.baseproject.appview.news.view.NewsListFragment

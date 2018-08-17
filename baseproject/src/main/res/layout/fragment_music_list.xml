@@ -49,11 +49,21 @@
 
             <ImageButton android:id="@+id/ivplay"
                 style="@style/ExoMediaButton.Play"
+
+                />
+            <ProgressBar android:id="@+id/exo_progress"
+                style="@style/ExoMediaButton"
+                android:visibility="gone"
                 />
 
             <ImageButton android:id="@+id/ivplayNext"
                 style="@style/ExoMediaButton.Next"
                 />
+
+            <ImageButton android:id="@+id/ivShuffle"
+                style="@style/ExoMediaButton.Shuffle"
+                />
+
 
         </LinearLayout>
 
