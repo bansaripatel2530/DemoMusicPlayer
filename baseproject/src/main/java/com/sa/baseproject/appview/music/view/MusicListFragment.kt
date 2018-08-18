@@ -2,8 +2,14 @@ package com.sa.baseproject.appview.music.view
 
 import android.arch.lifecycle.*
 import android.arch.lifecycle.Observer
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.Handler
+import android.os.IBinder
+import android.os.Parcelable
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -19,12 +25,18 @@ import android.support.v7.widget.DividerItemDecoration
 import android.util.Log
 import android.widget.SeekBar
 import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.util.Util
+import com.google.android.exoplayer2.util.Util.startForegroundService
+import com.sa.baseproject.appview.news.view.NewsActivity
 import com.sa.baseproject.utils.ToastUtils
 import java.util.*
 import kotlin.collections.ArrayList
 
 
+
+
 class MusicListFragment : AppFragment(), MusicListAdapter.OnClickListener {
+
 
     private var adapter: MusicListAdapter? = null
     private var viewProvider: MusicListViewModel? = null
@@ -50,12 +62,15 @@ class MusicListFragment : AppFragment(), MusicListAdapter.OnClickListener {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         setListData()
         viewProvider = ViewModelProviders.of(this).get(MusicListViewModel::class.java)
         viewProvider!!.getActivity(activity!!)
         viewProvider!!.tempAudioList.observe(this, Observer<ArrayList<AudioModel>> { list ->
             adapter!!.setData(list)
         })
+        val intent = Intent(activity, MusicPlayerService::class.java)
+        Util.startForegroundService(activity as NewsActivity, intent)
     }
 
     private fun setListData() {
@@ -82,11 +97,18 @@ class MusicListFragment : AppFragment(), MusicListAdapter.OnClickListener {
     }
 
 
+
+
     fun initMediaControls(ex: ExoPlayer) {
+//        val bundle = Bundle()
+//        bundle.putParcelableArrayList("LIST",audioList as java.util.ArrayList<AudioModel>)
+//        intent.putExtra("Bundle",bundle)
+
         this.exoplayer = ex
         initPlayButton()
         initSeekBar()
         setPlayPause(!audioList!![position].isPlaying)
+
 
     }
 
@@ -250,6 +272,8 @@ class MusicListFragment : AppFragment(), MusicListAdapter.OnClickListener {
         exo_progress.visibility = View.GONE
         ivplay.visibility = View.VISIBLE
     }
+
+
 
 
 }

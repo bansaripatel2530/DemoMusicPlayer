@@ -98,5 +98,7 @@
     <string name="piker_chosevideo">Choose Video</string>
     <string name="piker_choseimage">Choose Image</string>
     <string name="txt_file_toolarge">File is too large. Maximum size is %1$sMB</string>
+    <string name="channel_name">MUSIC</string>
+    <string name="channel_id">1</string>
 
 </resources>

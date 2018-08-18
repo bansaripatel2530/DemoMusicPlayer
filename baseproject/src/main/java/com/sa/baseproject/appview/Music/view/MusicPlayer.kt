@@ -4,6 +4,7 @@ import android.app.Activity
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.OnLifecycleEvent
+import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import com.google.android.exoplayer2.*
@@ -84,6 +85,7 @@ class MusicPlayer(var activity: Activity) : LifecycleObserver,Player.EventListen
                 dataSourceFactory).createMediaSource(Uri.fromFile(File(data.path)))
         exoPlayer!!.prepare(mediaSource)
         exoPlayer!!.addListener(this)
+
         val fragment = (activity as NewsActivity).appFragmentManager!!.getFragment() as MusicListFragment
         fragment.initMediaControls(exoPlayer!!)
 
