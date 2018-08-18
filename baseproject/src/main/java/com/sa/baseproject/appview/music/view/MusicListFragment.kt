@@ -56,7 +56,7 @@ class MusicListFragment : AppFragment(), MusicListAdapter.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         musicPlayer = MusicPlayer(activity!!)
-        lifecycle.addObserver(musicPlayer!!)
+//        lifecycle.addObserver(musicPlayer!!)
         return inflater.inflate(R.layout.fragment_music_list, container, false)
     }
 
@@ -69,8 +69,7 @@ class MusicListFragment : AppFragment(), MusicListAdapter.OnClickListener {
         viewProvider!!.tempAudioList.observe(this, Observer<ArrayList<AudioModel>> { list ->
             adapter!!.setData(list)
         })
-        val intent = Intent(activity, MusicPlayerService::class.java)
-        Util.startForegroundService(activity as NewsActivity, intent)
+
     }
 
     private fun setListData() {
@@ -91,8 +90,12 @@ class MusicListFragment : AppFragment(), MusicListAdapter.OnClickListener {
         this.item = item
         this.audioList = data
         this.position = position
-//        viewProvider!!.openPlayerLayout(lBottomSheet)
-        viewProvider!!.initializePlayer(this.item!!, tvSongName, musicPlayer)
+        val intent = Intent(activity, MusicPlayerService::class.java)
+        val bundle = Bundle()
+        bundle.putSerializable("B",item)
+        intent.putExtra("Bundle",bundle)
+        Util.startForegroundService(activity as NewsActivity, intent)
+//        viewProvider!!.initializePlayer(this.item!!, tvSongName, musicPlayer)
 
     }
 

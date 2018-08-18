@@ -17,13 +17,14 @@ import android.support.v4.media.session.MediaSessionCompat
 import com.google.android.exoplayer2.ui.PlayerNotificationManager.BitmapCallback
 import android.net.Uri
 import android.support.annotation.Nullable
+import android.util.Log
 import com.google.android.exoplayer2.ui.PlayerNotificationManager.MediaDescriptionAdapter
 import com.google.android.exoplayer2.source.ExtractorMediaSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.util.Util
-
-
+import com.sa.baseproject.appview.music.model.AudioModel
+import java.io.File
 
 
 class MusicPlayerService : Service() {
@@ -34,6 +35,8 @@ class MusicPlayerService : Service() {
     val PLAYBACK_CHANNEL_ID = "playback_channel"
     val PLAYBACK_NOTIFICATION_ID = 1
     val content:Context = this
+    private var data:ArrayList<AudioModel>?=null
+    private var item:AudioModel?=null
 
     override fun onCreate() {
         super.onCreate()
@@ -44,9 +47,9 @@ class MusicPlayerService : Service() {
                 context, Util.getUserAgent(context, "Music Player")
 
         )
-        val mediaSource = ExtractorMediaSource.Factory(
-                dataSourceFactory).createMediaSource(Uri.parse("http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"))
-        player!!.prepare(mediaSource)
+//        val mediaSource = ExtractorMediaSource.Factory(
+//                dataSourceFactory).createMediaSource(Uri.fromFile(File(item!!.path)))
+//        player!!.prepare(mediaSource)
         player!!.playWhenReady = true
 
         playerNotificationManager = PlayerNotificationManager.createWithNotificationChannel(
@@ -115,6 +118,9 @@ class MusicPlayerService : Service() {
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
+        val bundle = intent.extras
+//        item = bundle.getSerializable("List")
+//        Log.e("ITEM",item!!.name)
         return Service.START_STICKY
     }
 
